@@ -7,3 +7,7 @@ __pycache__/
 *.stl
 *.glb
 *.png
+
+# Slicer working files (Bambu Studio project/export). Force-add a real 3MF
+# deliverable with `git add -f` if one is ever intended for the repo.
+*.3mf
