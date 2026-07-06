@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+*.pyc
+
+# Generated model outputs — reproduce with the coin_*.py generators
+# (e.g. `uv run coin_sandwich.py`). Never commit these.
+*.stl
+*.glb
+*.png
