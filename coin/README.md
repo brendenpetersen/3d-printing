@@ -4,7 +4,24 @@ Parametric generators for an egg-shaped coin with a curved-diamond (star) hole,
 built from `coin.svg` (the single geometry source; drawn symmetric about the
 egg's long axis). Default print size: **55 mm tall** (41.2 × 55 × 3.94 mm).
 `single/coin_reference.stl` is the faithful right-angle-lip extrusion of the
-current SVG (the up-to-date replacement for the stale original `coin.glb`).
+current SVG, and `single/coin_reference.glb` (via `stl_to_glb.py`) is the
+display model the game embeds as `coin.glb`.
+
+**`coin.svg` is owned by the `dragon-eggs` repo** (`dragon-eggs/scripts/coin/coin.svg`),
+where it is generated from the egg outline by `scripts/coin/symmetrize_coin_svg.py`.
+The `coin.svg` here is a **vendored copy** of that master, committed so this repo
+stays self-contained (no side-by-side checkout needed to print). It changes only
+when the egg design changes. To update the coin silhouette: edit the source in
+`dragon-eggs`, regenerate, and copy the result here — the generator can write
+both in one step:
+
+```bash
+# from the dragon-eggs repo root
+uv run scripts/coin/symmetrize_coin_svg.py --also-write ../3d-printing/coin/coin.svg
+```
+
+Then regenerate the STLs here. `coin_outlines.py`'s `REF_BBOX` asserts the copy
+matches the expected design, so a stale `coin.svg` fails the generators loudly.
 
 `coin_outlines.py` is the shared library: SVG outline extraction, offsets,
 and watertight mesh-patch helpers. Each generator is a `uv` inline script;

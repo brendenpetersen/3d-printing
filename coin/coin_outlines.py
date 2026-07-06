@@ -38,6 +38,12 @@ from __future__ import annotations
 import numpy as np
 import trimesh
 
+# coin.svg is a vendored copy. The master lives in the dragon-eggs repo
+# (dragon-eggs/scripts/coin/coin.svg), generated there from the egg outline by
+# scripts/coin/symmetrize_coin_svg.py; this project only reads it. Re-sync this
+# copy when the upstream design changes — that generator's --also-write can
+# write here directly. REF_BBOX below asserts the copy matches the design, so a
+# grossly stale coin.svg fails the generators loudly.
 SVG_FILE = "coin.svg"
 PAGE_CENTER = 128.0  # coin.svg is a 256x256 mm page
 
